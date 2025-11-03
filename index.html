@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Café Rivoli — Vermut y Pinchos en Soria | Abierto desde hace 25 años</title>
+    <meta name="description" content="Ven al Café Rivoli en Soria: vermut casero, pinchos tradicionales y jueves de jamón (plato gratis). Bar en venta por 400.000€.">
+    
+    <meta property="og:title" content="Café Rivoli — Vermut y Pinchos en Soria">
+    <meta property="og:description" content="Bar en venta por 400.000€. Ven a probar nuestro vermut casero y pinchos tradicionales.">
+    <meta property="og:image" content="[URL_ABSOLUTA_DE_TU_WEB]/assets/images/fachada.jpg">
+    <meta property="og:url" content="[URL_ABSOLUTA_DE_TU_WEB]">
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Café Rivoli — Vermut y Pinchos en Soria">
+    <meta name="twitter:description" content="Bar en venta por 400.000€. Vermut casero, pinchos y jueves de jamón.">
+    <meta name="twitter:image" content="[URL_ABSOLUTA_DE_TU_WEB]/assets/images/fachada.jpg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#2E8B57',     // Verde principal
+                        'secondary': '#A8D5BA',   // Verde suave
+                        'accent': '#14532D',      // Verde oscuro
+                        'light-bg': '#F6FFF7',    // Fondo claro
+                        'text-main': '#1F2937',   // Texto principal
+                    },
+                    fontFamily: {
+                        'sans': ['Lora', 'sans-serif'], // Cuerpo (Lora)
+                        'display': ['Montserrat', 'sans-serif'] // Encabezados
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Café Rivoli",
+      "image": "[URL_ABSOLUTA_DE_TU_WEB]/assets/images/fachada.jpg",
+      "@id": "[URL_ABSOLUTA_DE_TU_WEB]",
+      "url": "[URL_ABSOLUTA_DE_TU_WEB]",
+      "telephone": "[PLACEHOLDER_PHONE]",
+      "priceRange": "€€",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "[PLACEHOLDER_CALLE_NUMERO]",
+        "addressLocality": "Soria",
+        "postalCode": "42001",
+        "addressCountry": "ES"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "opens": "10:00",
+          "closes": "23:00"
+        }
+      ],
+      "offers": {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "BusinessForSale",
+          "name": "Traspaso y venta de negocio: Café Rivoli"
+        },
+        "price": "400000",
+        "priceCurrency": "EUR",
+        "description": "Negocio en venta por 400.000€. Bar con clientela estable, licencia vigente y totalmente equipado en Soria."
+      }
+    }
+    </script>
+</head>
+
+<body class="font-sans text-text-main bg-light-bg text-lg" x-data="{ isMobileMenuOpen: false }">
+
+    <div class="bg-accent text-white text-center p-2 font-display text-sm md:text-base font-bold">
+        <a href="#en-venta" class="hover:underline">
+            <span class="animate-pulse">🔴</span> BAR EN VENTA: 400.000 € — Haz clic aquí para más información
+        </a>
+    </div>
+
+    <header class="bg-white/90 backdrop-blur-md shadow-md sticky top-0 z-50" x-data="{ atTop: true }" @scroll.window="atTop = (window.pageYOffset < 50)">
+        <nav class="container mx-auto px-4 md:px-6 py-3 flex justify-between items-center" :class="{ 'py-5': atTop, 'py-3': !atTop }" style="transition: padding 0.3s ease;">
+            <a href="#inicio" class="text-3xl font-bold font-display text-primary hover:text-accent transition">
+                Café Rivoli
+            </a>
+
+            <div class="hidden lg:flex space-x-6 items-center font-display text-base">
+                <a href="#inicio" class="hover:text-primary transition">Inicio</a>
+                <a href="#menu" class="hover:text-primary transition">Menú</a>
+                <a href="#galeria" class="hover:text-primary transition">Galería</a>
+                <a href="#ubicacion" class="hover:text-primary transition">Horarios</a>
+                <a href="#nosotros" class="hover:text-primary transition">Quiénes somos</a>
+                <a href="#opiniones" class="hover:text-primary transition">Opiniones</a>
+                <a href="#en-venta" class="text-red-600 font-bold hover:text-red-800 transition">En venta</a>
+                <a href="#contacto" class="hover:text-primary transition">Contacto</a>
+                <a href="tel:[PLACEHOLDER_PHONE]" class="bg-primary text-white px-5 py-2 rounded-full font-bold hover:bg-accent transition shadow-lg">
+                    Llamar
+                </a>
+            </div>
+
+            <button @click="isMobileMenuOpen = !isMobileMenuOpen" class="lg:hidden z-50">
+                <svg x-show="!isMobileMenuOpen" class="w-8 h-8 text-primary" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                <svg x-show="isMobileMenuOpen" class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </nav>
+
+        <div x-show="isMobileMenuOpen" 
+             x-transition:enter="transition ease-out duration-300"
+             x-transition:enter-start="opacity-0 transform -translate-y-4"
+             x-transition:enter-end="opacity-100 transform translate-y-0"
+             x-transition:leave="transition ease-in duration-200"
+             x-transition:leave-start="opacity-100 transform translate-y-0"
+             x-transition:leave-end="opacity-0 transform -translate-y-4"
+             @click.away="isMobileMenuOpen = false"
+             class="lg:hidden absolute top-full left-0 w-full bg-white shadow-xl z-40 p-5">
+            <div class="flex flex-col space-y-4 font-display text-lg text-center">
+                <a href="#inicio" @click="isMobileMenuOpen = false" class="hover:text-primary transition">Inicio</a>
+                <a href="#menu" @click="isMobileMenuOpen = false" class="hover:text-primary transition">Menú</a>
+                <a href="#galeria" @click="isMobileMenuOpen = false" class="hover:text-primary transition">Galería</a>
+                <a href="#ubicacion" @click="isMobileMenuOpen = false" class="hover:text-primary transition">Horarios</a>
+                <a href="#nosotros" @click="isMobileMenuOpen = false" class="hover:text-primary transition">Quiénes somos</a>
+                <a href="#opiniones" @click="isMobileMenuOpen = false" class="hover:text-primary transition">Opiniones</a>
+                <a href="#en-venta" @click="isMobileMenuOpen = false" class="text-red-600 font-bold hover:text-red-800 transition">En venta</a>
+                <a href="#contacto" @click="isMobileMenuOpen = false" class="hover:text-primary transition">Contacto</a>
+                <a href="tel:[PLACEHOLDER_PHONE]" class="bg-primary text-white px-5 py-3 rounded-full font-bold hover:bg-accent transition shadow-lg">
+                    Llamar ahora
+                </a>
+                <a href="mailto:[PLACEHOLDER_EMAIL]" class="bg-gray-200 text-text-main px-5 py-3 rounded-full font-bold hover:bg-gray-300 transition">
+                    Reservar por Email
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <section id="inicio" class="relative min-h-[80vh] md:min-h-[90vh] flex items-center text-white" 
+                 x-data="{ 
+                    currentSlide: 0, 
+                    slides: [
+                        'assets/images/vermut1.jpg', 
+                        'assets/images/bar1.jpg', 
+                        'assets/images/pincho1.jpg'
+                    ],
+                    init() { setInterval(() => { this.nextSlide() }, 5000) },
+                    nextSlide() { this.currentSlide = (this.currentSlide + 1) % this.slides.length },
+                    prevSlide() { this.currentSlide = (this.currentSlide - 1 + this.slides.length) % this.slides.length }
+                 }">
+            
+            <template x-for="(slide, index) in slides" :key="index">
+                <div x-show="currentSlide === index"
+                     class="absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000"
+                     :style="`background-image: url('${slide}')`"
+                     x-transition:enter="transition-opacity ease-in duration-1000"
+                     x-transition:enter-start="opacity-0"
+                     x-transition:enter-end="opacity-100"
+                     x-transition:leave="transition-opacity ease-out duration-1000"
+                     x-transition:leave-start="opacity-100"
+                     x-transition:leave-end="opacity-0">
+                </div>
+            </template>
+
+            <div class="absolute inset-0 bg-black/60"></div>
+
+            <div class="relative container mx-auto px-4 md:px-6 z-10 text-center">
+                <h1 class="font-display text-4xl sm:text-5xl md:text-7xl font-bold drop-shadow-lg">
+                    Café Rivoli — Tradición y buen vermut en Soria
+                </h1>
+                <p class="font-sans text-xl md:text-2xl mt-4 max-w-3xl mx-auto drop-shadow-md">
+                    Vermut casero, pinchos tradicionales y buen ambiente desde hace 25 años.
+                </p>
+
+                <div class="flex flex-col sm:flex-row justify-center gap-4 mt-10">
+                    <a href="mailto:[PLACEHOLDER_EMAIL]?subject=Reserva%20en%20Café%20Rivoli" class="bg-primary text-white px-8 py-4 rounded-full font-bold font-display text-lg hover:bg-accent transition shadow-xl transform hover:scale-105">
+                        Reservar mesa
+                    </a>
+                    <a href="tel:[PLACEHOLDER_PHONE]" class="bg-white text-primary px-8 py-4 rounded-full font-bold font-display text-lg hover:bg-gray-200 transition shadow-xl transform hover:scale-105">
+                        Llámanos
+                    </a>
+                    <a href="#en-venta" class="bg-red-600 text-white px-8 py-4 rounded-full font-bold font-display text-lg hover:bg-red-800 transition shadow-xl transform hover:scale-105">
+                        Ver que está a la venta (400.000€)
+                    </a>
+                </div>
+
+                <div class="mt-12 bg-accent/80 backdrop-blur-sm border-2 border-secondary p-4 rounded-lg inline-block shadow-lg">
+                    <p class="font-display font-bold text-lg md:text-xl">
+                        <span class="text-2xl">🥓</span> Todos los jueves: picamos jamón — ¡plato gratis con consumición!
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="menu" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4 md:px-6 text-center">
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-accent mb-4">Nuestra Carta</h2>
+                <p class="text-xl max-w-2xl mx-auto mb-12">
+                    Sabores de siempre, con el toque de la casa. Especialidad en vermut y pinchos de calidad.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
+                    <div class="bg-light-bg p-6 rounded-lg shadow-md border border-gray-200">
+                        <h3 class="font-display text-2xl font-bold text-primary mb-3">Vermut y Aperitivos</h3>
+                        <ul class="space-y-2">
+                            <li class="flex justify-between border-b border-dashed border-gray-300 py-1"><span>Vermut Casero de la Casa</span> <span class="font-bold text-primary">3.50€</span></li>
+                            <li class="flex justify-between border-b border-dashed border-gray-300 py-1"><span>Martini (Rojo / Blanco)</span> <span class="font-bold">3.00€</span></li>
+                            <li class="flex justify-between border-b border-dashed border-gray-300 py-1"><span>Gildas caseras</span> <span class="font-bold">2.50€</span></li>
+                            <li class="flex justify-between py-1"><span>Patatas fritas (ración)</span> <span class="font-bold">4.00€</span></li>
+                        </ul>
+                    </div>
+                    <div class="bg-light-bg p-6 rounded-lg shadow-md border border-gray-200">
+                        <h3 class="font-display text-2xl font-bold text-primary mb-3">Pinchos y Tapas</h3>
+                        <ul class="space-y-2">
+                            <li class="flex justify-between border-b border-dashed border-gray-300 py-1"><span>Pincho de tortilla</span> <span class="font-bold">2.80€</span></li>
+                            <li class="flex justify-between border-b border-dashed border-gray-300 py-1"><span>Torrezno de Soria</span> <span class="font-bold">3.00€</span></li>
+                            <li class="flex justify-between border-b border-dashed border-gray-300 py-1"><span>Croqueta (Jamón / Boletus)</span> <span class="font-bold">2.00€</span></li>
+                            <li class="flex justify-between py-1"><span>Ración de jamón (Jueves gratis)</span> <span class="font-bold">12.00€</span></li>
+                        </ul>
+                    </div>
+                    <div class="bg-light-bg p-6 rounded-lg shadow-md border border-gray-200">
+                        <h3 class="font-display text-2xl font-bold text-primary mb-3">Bebidas</h3>
+                        <ul class="space-y-2">
+                            <li class="flex justify-between border-b border-dashed border-gray-300 py-1"><span>Caña / Doble</span> <span class="font-bold">2.00€ / 3.00€</span></li>
+                            <li class="flex justify-between border-b border-dashed border-gray-300 py-1"><span>Copa de Vino (Ribera / Rioja)</span> <span class="font-bold">2.50€</span></li>
+                            <li class="flex justify-between border-b border-dashed border-gray-300 py-1"><span>Refrescos</span> <span class="font-bold">2.80€</span></li>
+                            <li class="flex justify-between py-1"><span>Café solo</span> <span class="font-bold">1.50€</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <a href="assets/pdf/carta.pdf" download="Carta_Cafe_Rivoli.pdf" class="mt-12 inline-block bg-primary text-white px-8 py-3 rounded-full font-bold font-display text-lg hover:bg-accent transition shadow-lg transform hover:scale-105">
+                    Descargar Carta Completa (PDF)
+                </a>
+            </div>
+        </section>
+
+        <section id="galeria" class="py-16 md:py-24 bg-light-bg">
+            <div class="container mx-auto px-4 md:px-6">
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-accent text-center mb-12">Galería de momentos</h2>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="col-span-2 row-span-2 rounded-lg overflow-hidden shadow-lg group">
+                        <img src="assets/images/jamon1.jpg" alt="Dueño cortando jamón ibérico en la barra del Café Rivoli" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                    </div>
+                    <div class="rounded-lg overflow-hidden shadow-lg group">
+                        <img src="assets/images/vermut1.jpg" alt="Vermut casero servido en copa tradicional en Café Rivoli, Soria" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                    </div>
+                    <div class="rounded-lg overflow-hidden shadow-lg group">
+                        <img src="assets/images/pincho1.jpg" alt="Pincho destacado en un bol negro en la barra" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                    </div>
+                    <div class="rounded-lg overflow-hidden shadow-lg group">
+                        <img src="assets/images/bar1.jpg" alt="Preparación de un Gin Tonic en la barra del bar" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                    </div>
+                    <div class="rounded-lg overflow-hidden shadow-lg group">
+                        <img src="assets/images/fachada.jpg" alt="Fachada exterior verde del Café Rivoli en Soria" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ubicacion" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4 md:px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="font-display text-4xl md:text-5xl font-bold text-accent mb-6">Ven a visitarnos</h2>
+                    <p class="text-xl mb-8">
+                        Encuéntranos en el corazón de Soria. Perfecto para el aperitivo, una comida ligera o una copa por la tarde.
+                    </p>
+                    
+                    <h3 class="font-display text-2xl font-bold text-primary mb-3">Dirección</h3>
+                    <p class="text-lg mb-6">[PLACEHOLDER_CALLE_NUMERO], 42001 Soria</p>
+
+                    <h3 class="font-display text-2xl font-bold text-primary mb-3">Horario</h3>
+                    <ul class="space-y-2 mb-8 text-lg">
+                        <li class="flex justify-between"><span>Lunes — Domingo:</span> <strong>10:00 – 23:00</strong></li>
+                        <li class="flex justify-between text-primary font-bold"><span>Jueves (Evento Jamón):</span> <strong>12:00 – 15:00</strong></li>
+                    </ul>
+
+                    <a href="[PLACEHOLDER_GOOGLE_MAPS_LINK]" target="_blank" rel="noopener noreferrer" class="inline-block bg-primary text-white px-8 py-3 rounded-full font-bold font-display text-lg hover:bg-accent transition shadow-lg transform hover:scale-105">
+                        Cómo llegar en Google Maps
+                    </a>
+                </div>
+
+                <div class="rounded-lg shadow-xl overflow-hidden h-96 lg:h-[500px] border-4 border-white">
+                    <iframe 
+                        src="[PLACEHOLDER_GOOGLE_MAPS_EMBED_URL]" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <section id="nosotros" class="py-16 md:py-24 bg-light-bg">
+            <div class="container mx-auto px-4 md:px-6 flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2">
+                    <h2 class="font-display text-4xl md:text-5xl font-bold text-accent mb-6">Nuestra Historia</h2>
+                    <div class="space-y-6 text-lg text-text-main leading-relaxed">
+                        <p>
+                            Café Rivoli nació hace 25 años como un pequeño bar familiar en el corazón de Soria. Desde entonces hemos servido vermuts, pinchos y una cocina sencilla basada en producto local. 
+                        </p>
+                        <p>
+                            Hoy, tras décadas de buen trato y clientela fiel, ofrecemos un espacio cálido donde compartir buenos momentos.
+                        </p>
+                        <p class="font-bold text-primary">
+                            Propiedad de la familia [APELLIDO_FAMILIA], gestionado con dedicación por [NOMBRE_PROPIETARIO].
+                        </p>
+                    </div>
+                </div>
+                <div class="lg:w-1/2">
+                    <img src="assets/images/jamon1.jpg" alt="[NOMBRE_PROPIETARIO] cortando jamón en el Café Rivoli" class="rounded-lg shadow-xl w-full h-auto object-cover">
+                    <p class="text-center text-gray-600 italic mt-2">[NOMBRE_PROPIETARIO], al frente del negocio.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="opiniones" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4 md:px-6">
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-accent text-center mb-12">Lo que dicen nuestros clientes</h2>
+                <p class="text-center text-gray-600 mb-6 -mt-8">Reseñas extraídas de Google (EJEMPLOS)</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-light-bg p-6 rounded-lg shadow-lg border border-secondary">
+                        <div class="flex justify-between items-center mb-3">
+                            <h4 class="font-display font-bold text-lg text-primary">Ana G.</h4>
+                            <span class="font-bold text-yellow-500">★★★★★</span>
+                        </div>
+                        <p class="text-text-main italic">"¡El mejor vermut de Soria! El ambiente es súper acogedor y los jueves con el jamón son imprescindibles. Llevo viniendo años."</p>
+                    </div>
+                    <div class="bg-light-bg p-6 rounded-lg shadow-lg border border-secondary">
+                        <div class="flex justify-between items-center mb-3">
+                            <h4 class="font-display font-bold text-lg text-primary">Javier M.</h4>
+                            <span class="font-bold text-yellow-500">★★★★★</span>
+                        </div>
+                        <p class="text-text-main italic">"Un clásico que nunca falla. Trato excelente, pinchos de calidad y un local con mucho encanto. Perfecto para el aperitivo."</p>
+                    </div>
+                    <div class="bg-light-bg p-6 rounded-lg shadow-lg border border-secondary">
+                        <div class="flex justify-between items-center mb-3">
+                            <h4 class="font-display font-bold text-lg text-primary">Lucía F.</h4>
+                            <span class="font-bold text-yellow-500">★★★★☆</span>
+                        </div>
+                        <p class="text-text-main italic">"Nos encanta parar aquí. El local es muy bonito y el servicio rápido. Genial para tomar algo tranquilamente."</p>
+                    </div>
+                </div>
+
+                <div class="text-center mt-12">
+                    <a href="[PLACEHOLDER_GOOGLE_REVIEWS_LINK]" target="_blank" rel="noopener noreferrer" class="inline-block bg-primary text-white px-8 py-3 rounded-full font-bold font-display text-lg hover:bg-accent transition shadow-lg transform hover:scale-105">
+                        Ver más reseñas en Google
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="en-venta" class="py-16 md:py-24 bg-accent/10 border-t-4 border-b-4 border-red-600">
+            <div class="container mx-auto px-4 md:px-6 text-center">
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-red-700 mb-4">Oportunidad de Negocio: Se Vende</h2>
+                <p class="text-3xl font-display font-bold text-text-main mb-6">Precio de venta: 400.000 €</p>
+                
+                <p class="text-xl max-w-3xl mx-auto mb-10">
+                    Tras 25 años de éxito, el Café Rivoli está en venta. Una oportunidad única para adquirir un negocio rentable, con clientela estable, licencia vigente y totalmente equipado en una ubicación privilegiada de Soria.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left max-w-4xl mx-auto mb-10">
+                    <div class="bg-white p-4 rounded-lg shadow-md"><strong>Metros:</strong> [XXX] m²</div>
+                    <div class="bg-white p-4 rounded-lg shadow-md"><strong>Aforo:</strong> [XXX] personas</div>
+                    <div class="bg-white p-4 rounded-lg shadow-md"><strong>Licencia:</strong> Bar-Cafetería (Vigente)</div>
+                    <div class="bg-white p-4 rounded-lg shadow-md"><strong>Cocina:</strong> Totalmente equipada</div>
+                    <div class="bg-white p-4 rounded-lg shadow-md"><strong>Terraza:</strong> [Sí/No/Nº mesas]</div>
+                    <div class="bg-white p-4 rounded-lg shadow-md"><strong>Clientela:</strong> Estable y demostrable</div>
+                </div>
+
+                <p class="text-lg font-bold mb-6">Para más información, dossier completo y visitas, contacte con nosotros:</p>
+                <p class="font-display text-2xl font-bold text-primary mb-2">[PLACEHOLDER_PHONE]</p>
+                <p class="font-display text-2xl font-bold text-primary mb-8">[PLACEHOLDER_EMAIL_VENTA]</p>
+
+                <a href="assets/pdf/dossier_venta.pdf" download="Dossier_Venta_Cafe_Rivoli.pdf" class="inline-block bg-red-700 text-white px-8 py-3 rounded-full font-bold font-display text-lg hover:bg-red-900 transition shadow-lg transform hover:scale-105">
+                    Descargar Dossier de Venta (PDF)
+                </a>
+            </div>
+        </section>
+
+        <section id="contacto" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4 md:px-6">
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-accent text-center mb-12">Contacto y Reservas</h2>
+                
+                <div class="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <form name="contacto" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="space-y-6">
+                        <p class="hidden">
+                            <label>No rellenes esto si eres humano: <input name="bot-field" /></label>
+                        </p>
+                        <input type="hidden" name="form-name" value="contacto" />
+                        
+                        <div>
+                            <label for="name" class="block text-sm font-display font-medium text-text-main">Nombre</label>
+                            <input type="text" name="name" id="name" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary text-lg p-3">
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-sm font-display font-medium text-text-main">Teléfono</label>
+                            <input type="tel" name="phone" id="phone" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary text-lg p-3">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-display font-medium text-text-main">Email</label>
+                            <input type="email" name="email" id="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary text-lg p-3">
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label for="date" class="block text-sm font-display font-medium text-text-main">Fecha</label>
+                                <input type="date" name="date" id="date" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary text-lg p-3">
+                            </div>
+                            <div>
+                                <label for="people" class="block text-sm font-display font-medium text-text-main">Personas</label>
+                                <input type="number" name="people" id="people" min="1" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary text-lg p-3">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-display font-medium text-text-main">Mensaje</label>
+                            <textarea id="message" name="message" rows="4" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary text-lg p-3"></textarea>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <input id="gdpr" name="gdpr" type="checkbox" required class="h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary mt-1">
+                            <label for="gdpr" class="ml-3 text-sm text-gray-600">Acepto la <a href="legal.html" target="_blank" class="text-primary hover:underline">Política de Privacidad</a> y consiento que mis datos se usen para gestionar la reserva.</label>
+                        </div>
+
+                        <div>
+                            <button type="submit" class="w-full bg-primary text-white px-8 py-4 rounded-full font-bold font-display text-lg hover:bg-accent transition shadow-lg transform hover:scale-105">
+                                Enviar Petición de Reserva
+                            </button>
+                        </div>
+                        <p class="text-sm text-gray-600 text-center">Intentaremos responder en menos de 24h. Para reservas inmediatas, por favor, llámenos.</p>
+                    </form>
+                    
+                    <div class="space-y-8">
+                        <div>
+                            <h3 class="font-display text-2xl font-bold text-primary mb-3">Llámanos</h3>
+                            <p class="text-lg">Para reservas el mismo día, es mejor que nos llames:</p>
+                            <a href="tel:[PLACEHOLDER_PHONE]" class="font-display text-3xl font-bold text-text-main hover:text-primary transition">[PLACEHOLDER_PHONE]</a>
+                        </div>
+                        <div>
+                            <h3 class="font-display text-2xl font-bold text-primary mb-3">Otras consultas</h3>
+                            <p class="text-lg">Para grupos grandes, eventos o consultas sobre la venta:</p>
+                            <a href="mailto:[PLACEHOLDER_EMAIL]" class="font-display text-2xl font-bold text-text-main hover:text-primary transition">[PLACEHOLDER_EMAIL]</a>
+                        </div>
+                        <div>
+                            <h3 class="font-display text-2xl font-bold text-primary mb-3">Envíanos un WhatsApp</h3>
+                            <a href="https://wa.me/[PLACEHOLDER_WHATSAPP_NUMBER]" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-green-500 text-white px-6 py-3 rounded-full font-bold font-display text-lg hover:bg-green-600 transition shadow-lg">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.956-.5-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.433-9.89-9.889-9.89-5.458 0-9.891 4.438-9.889 9.891.001 2.23.651 4.28 1.807 5.947l-1.023 3.748 3.847-1.003zm3.807-3.565c.099-.14.198-.28.297-.419.099-.14.18-.299.24-.478.06-.179.09-.38.09-.581s-.03-.39-.09-.581c-.06-.179-.14-.339-.24-.478-.099-.14-.198-.28-.297-.419-.099-.14-.228-.249-.386-.329-.158-.08-.347-.12-.566-.12s-.408.04-.566.12c-.158.08-.287.189-.386.329-.099.14-.198.28-.297.419-.099.14-.18.299-.24.478-.06.179-.09.38-.09.581s.03.39.09.581c.06.179.14.339.24.478.099.14.198.28.297.419.099.14.228.249.386.329.158.08.347.12.566.12s.408-.04.566-.12c.158-.08.287-.189.386-.329z"/></svg>
+                                Chatear en WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-accent text-white pt-16 pb-8">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <h5 class="text-3xl font-bold font-display mb-4">Café Rivoli</h5>
+                    <p class="text-secondary mb-4 max-w-md">25 años sirviendo el mejor vermut y pinchos de Soria. Un lugar de encuentro para amigos y familia.</p>
+                </div>
+
+                <div>
+                    <h5 class="font-display font-bold text-lg mb-4 uppercase">Explorar</h5>
+                    <ul class="space-y-2 text-secondary">
+                        <li><a href="#menu" class="hover:text-white">Menú</a></li>
+                        <li><a href="#galeria" class="hover:text-white">Galería</a></li>
+                        <li><a href="#nosotros" class="hover:text-white">Quiénes somos</a></li>
+                        <li><a href="#en-venta" class="hover:text-white font-bold">Bar en Venta</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="font-display font-bold text-lg mb-4 uppercase">Contacto</h5>
+                    <ul class="space-y-2 text-secondary">
+                        <li>[PLACEHOLDER_CALLE_NUMERO], 42001 Soria</li>
+                        <li><a href="tel:[PLACEHOLDER_PHONE]" class="hover:text-white">[PLACEHOLDER_PHONE]</a></li>
+                        <li><a href="mailto:[PLACEHOLDER_EMAIL]" class="hover:text-white">[PLACEHOLDER_EMAIL]</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="flex justify-center space-x-6 mt-12 mb-8">
+                <a href="[PLACEHOLDER_INSTAGRAM_URL]" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-secondary hover:text-white transform hover:scale-125 transition">
+                    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.148 3.227-1.666 4.771-4.919 4.919-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.07-1.646-.07-4.85s.012-3.584.07-4.85c.148-3.227 1.666-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163m0-2.163C8.74 0 8.333.012 7.053.072 2.695.272.273 2.69.073 7.052.012 8.333 0 8.74 0 12s.012 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98C8.333 23.988 8.74 24 12 24s3.667-.012 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.06-1.28.072-1.687.072-4.947s-.012-3.667-.072-4.947C23.728 2.69 21.31 
+.273 16.948.073 15.667.012 15.26 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"/></svg>
+                </a>
+                <a href="[PLACEHOLDER_FACEBOOK_URL]" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="text-secondary hover:text-white transform hover:scale-125 transition">
+                    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878V14.89h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.772-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+                </a>
+                <a href="[PLACEHOLDER_GOOGLE_MAPS_LINK]" target="_blank" rel="noopener noreferrer" aria-label="Google Maps" class="text-secondary hover:text-white transform hover:scale-125 transition">
+                    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                </a>
+            </div>
+
+            <div class="border-t border-secondary/30 pt-8 text-center text-secondary text-sm">
+                <p>&copy; 2024 Café Rivoli Soria. Todos los derechos reservados.</p>
+                <p>
+                    <a href="legal.html" class="hover:text-white">Aviso Legal</a> | 
+                    <a href="legal.html#privacidad" class="hover:text-white">Política de Privacidad</a> | 
+                    <a href="legal.html#cookies" class="hover:text-white">Política de Cookies</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+
+    <div x-data="{ 
+            showBanner: false,
+            init() { 
+                setTimeout(() => {
+                    this.showBanner = !localStorage.getItem('cookies_accepted');
+                }, 2000);
+            },
+            acceptCookies() { 
+                localStorage.setItem('cookies_accepted', 'true');
+                this.showBanner = false; 
+                // Aquí se activaría Google Analytics si estuviera configurado
+                // gtag('consent', 'update', { 'analytics_storage': 'granted' });
+            } 
+         }" 
+         x-show="showBanner"
+         x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0 transform translate-y-10"
+         x-transition:enter-end="opacity-100 transform translate-y-0"
+         x-transition:leave="transition ease-in duration-200"
+         x-transition:leave-start="opacity-100 transform translate-y-0"
+         x-transition:leave-end="opacity-0 transform translate-y-10"
+         class="fixed bottom-0 left-0 right-0 bg-text-main text-white p-5 shadow-2xl z-50 flex flex-col md:flex-row justify-between items-center gap-4"
+         style="display: none;">
+        
+        <p class="text-sm md:text-base text-gray-200">
+            Usamos cookies para mejorar tu experiencia y analizar el tráfico.
+            <a href="legal.html#cookies" class="underline hover:text-white">Leer más</a>
+        </p>
+        <button @click="acceptCookies()" class="bg-primary text-white px-6 py-2 rounded-full font-bold font-display hover:bg-accent transition w-full md:w-auto flex-shrink-0">
+            Entendido
+        </button>
+    </div>
+    
+    </body>
+</html>
